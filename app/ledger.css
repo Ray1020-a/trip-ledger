@@ -15,9 +15,9 @@
   --btn-submit-hover: #3d94cb;
   --upload-bg: #a8d5e5;
   --upload-hover: #97c9db;
-  --font-kalam: var(--font-kalam);
-  --font-noto: var(--font-noto);
-  --font-zhi: var(--font-zhi);
+  --font-kalam: var(--font-iansui);
+  --font-noto: var(--font-iansui);
+  --font-zhi: var(--font-iansui);
 }
 
 * {
@@ -31,6 +31,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-dark);
   min-height: 100vh;
+  font-family: var(--font-iansui), sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -502,7 +503,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
   position: absolute;
   top: 0;
   left: 0;

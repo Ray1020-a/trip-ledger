@@ -1,24 +1,12 @@
 import type { Metadata } from "next";
-import { Kalam, Noto_Sans_TC, Zhi_Mang_Xing } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import "./ledger.css";
 
-const kalam = Kalam({
-  weight: "700",
-  subsets: ["latin"],
-  variable: "--font-kalam",
-});
-
-const notoSansTC = Noto_Sans_TC({
-  weight: ["500", "700"],
-  subsets: ["latin"],
-  variable: "--font-noto",
-});
-
-const zhiMangXing = Zhi_Mang_Xing({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-zhi",
+const iansui = localFont({
+  src: "./fonts/Iansui-Regular.ttf",
+  variable: "--font-iansui",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -34,7 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang="zh-TW"
-      className={`${kalam.variable} ${notoSansTC.variable} ${zhiMangXing.variable} h-full antialiased`}
+      className={`${iansui.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>
