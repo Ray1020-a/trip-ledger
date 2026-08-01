@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { AUTH_COOKIE } from "@/lib/auth";
+import { AUTH_COOKIE, buildToken } from "@/lib/auth";
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   }
 
   const store = await cookies();
-  store.set(AUTH_COOKIE, "1", {
+  store.set(AUTH_COOKIE, buildToken(password), {
     httpOnly: true,
     sameSite: "lax",
     path: "/",
