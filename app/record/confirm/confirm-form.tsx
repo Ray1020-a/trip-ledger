@@ -95,7 +95,7 @@ export default function ConfirmForm({
             pos = null;
           }
         }
-        locationText = pos ? `${pos.lat},${pos.lng}` : "無法取得位置";
+        locationText = pos ? `${pos.lat}/${pos.lng}` : "無法取得位置";
       } else {
         locationText = platform;
       }
