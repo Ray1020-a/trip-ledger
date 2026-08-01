@@ -36,6 +36,9 @@ yarn-error.log*
 # 使用者上傳的圖片
 /IMG/
 
+# pm2 日誌
+/logs/
+
 # vercel
 .vercel
 
