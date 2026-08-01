@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripLedger - 記帳列表</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Noto+Sans+TC:wght@500;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #5ce1e6;
+            --card-bg: #ffffff;
+            --item-card-bg: #c9f5f7;
+            --btn-pink: #f0c3be;
+            --btn-pink-hover: #e5b3ad;
+            --text-dark: #222222;
+            --text-muted: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 16px 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* 總花費卡片 */
+        .total-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .total-title {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .total-amount {
+            font-family: 'Kalam', cursive;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* 列表區塊 */
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .item-card {
+            background-color: var(--item-card-bg);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            transition: transform 0.15s ease;
+        }
+
+        .item-card:active {
+            transform: scale(0.99);
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            max-width: 65%;
+        }
+
+        .item-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.35;
+            word-break: break-word;
+        }
+
+        .item-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .item-category {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .item-price {
+            font-family: 'Kalam', cursive;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .item-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* 新增按鈕 */
+        .add-btn {
+            width: 100%;
+            height: 60px;
+            background-color: var(--btn-pink);
+            border: 2px solid var(--text-dark);
+            border-radius: 16px;
+            color: var(--text-dark);
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 2.2rem;
+            cursor: pointer;
+            margin-top: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .add-btn:hover {
+            background-color: var(--btn-pink-hover);
+            transform: translateY(-2px);
+        }
+
+        .add-btn:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 總花費區塊 -->
+        <div class="total-card">
+            <h2 class="total-title">總花費</h2>
+            <div class="total-amount">NT$ 99999999</div>
+        </div>
+
+        <!-- 記帳明細列表 -->
+        <div class="list-container">
+            
+            <!-- 項目 1 -->
+            <div class="item-card">
+                <div class="item-info">
+                    <div class="item-title">花蓮住宿 路徒行旅-花蓮東大館 標準單人房</div>
+                </div>
+                <div class="item-meta">
+                    <span class="item-category">住宿</span>
+                    <span class="item-price">NT$ 1038</span>
+                    <span class="item-date">2026/07/30 18:36:29</span>
+                </div>
+            </div>
+
+            <!-- 項目 2 -->
+            <div class="item-card">
+                <div class="item-info">
+                    <div class="item-title">剛雨多然泰雨餐廳</div>
+                </div>
+                <div class="item-meta">
+                    <span class="item-category">餐飲</span>
+                    <span class="item-price">NT$ 1663</span>
+                    <span class="item-date">2026/07/30 15:32:12</span>
+                </div>
+            </div>
+
+            <!-- 項目 3 -->
+            <div class="item-card">
+                <div class="item-info">
+                    <div class="item-title">花蓮公車 太魯閣客運 1992</div>
+                </div>
+                <div class="item-meta">
+                    <span class="item-category">交通</span>
+                    <span class="item-price">NT$ 20</span>
+                    <span class="item-date">2026/07/30 13:12:12</span>
+                </div>
+            </div>
+
+            <!-- 項目 4 -->
+            <div class="item-card">
+                <div class="item-info">
+                    <div class="item-title">拉拉拉商店</div>
+                </div>
+                <div class="item-meta">
+                    <span class="item-category">其他</span>
+                    <span class="item-price">NT$ 163</span>
+                    <span class="item-date">2026/07/30 11:35:52</span>
+                </div>
+            </div>
+
+            <!-- 項目 5 -->
+            <div class="item-card">
+                <div class="item-info">
+                    <div class="item-title">台南孔廟門票 學生票</div>
+                </div>
+                <div class="item-meta">
+                    <span class="item-category">門票</span>
+                    <span class="item-price">NT$ 35</span>
+                    <span class="item-date">2026/07/30 10:42:33</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 添加記帳按鈕 -->
+        <a href="3.html" class="add-btn">添加記帳</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripLedger - 登入</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Noto+Sans+TC:wght@500;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #5ce1e6;
+            --card-bg: #ffffff;
+            --primary-btn: #47d6dc;
+            --primary-btn-hover: #36c5cc;
+            --text-dark: #222222;
+            --border-color: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .header-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .title-en {
+            font-family: 'Kalam', cursive;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .title-zh {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 3.2rem;
+            color: var(--text-dark);
+            margin-top: 5px;
+        }
+
+        .login-card {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px 25px 30px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .lock-icon-container {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85px;
+            height: 85px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .lock-icon {
+            width: 70px;
+            height: 70px;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .password-input {
+            width: 100%;
+            height: 52px;
+            border: 2px solid var(--primary-btn);
+            border-radius: 26px;
+            padding: 0 50px 0 20px;
+            font-size: 1.05rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .password-input:focus {
+            border-color: #2ab8bf;
+            box-shadow: 0 0 0 3px rgba(71, 214, 220, 0.25);
+        }
+
+        .eye-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .eye-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .submit-btn {
+            width: 100%;
+            height: 52px;
+            background-color: var(--primary-btn);
+            border: none;
+            border-radius: 26px;
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-family: 'Zhi Mang Xing', cursive;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            letter-spacing: 2px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-btn-hover);
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px);
+        }
+
+        .taiwan-map {
+            margin-top: 35px;
+            width: 180px;
+            opacity: 0.85;
+            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.05));
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Title Header -->
+        <div class="header-title">
+            <h1 class="title-en">TripLedger</h1>
+            <h2 class="title-zh">旅行貴啥小</h2>
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+            <div class="lock-icon-container">
+                <!-- SVG Lock Icon -->
+                <svg class="lock-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="25" y="42" width="50" height="42" rx="10" fill="#47D6DC" stroke="#222" stroke-width="3"/>
+                    <path d="M35 42V28C35 19.7157 41.7157 13 50 13C58.2843 13 65 19.7157 65 28V42" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="50" cy="58" r="4" fill="#222"/>
+                    <path d="M50 62V72" stroke="#222" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <form style="width: 100%; display: flex; flex-direction: column; gap: 20px;" onsubmit="event.preventDefault(); location.href='2.html';">
+                <div class="input-group">
+                    <input type="password" id="password" class="password-input" placeholder="請輸入密碼" required>
+                    <button type="button" class="eye-btn" id="togglePassword" aria-label="Toggle password visibility">
+                        <svg id="eyeIcon" viewBox="0 0 24 24">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+
+                <button type="submit" class="submit-btn">登入</button>
+            </form>
+        </div>
+
+        <!-- Taiwan Map Vector Illustration -->
+        <svg class="taiwan-map" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M110,20 Q130,30 140,50 Q160,80 150,110 Q140,140 160,170 Q170,200 150,230 Q130,260 120,290 Q110,320 95,350 Q85,370 75,380 Q65,370 60,340 Q55,300 70,260 Q80,220 75,180 Q65,140 80,100 Q90,60 100,30 Z" fill="#29b6f6" opacity="0.9"/>
+        </svg>
+    </div>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        const eyeIcon = document.querySelector('#eyeIcon');
+
+        togglePassword.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            
+            if (type === 'text') {
+                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            } else {
+                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            }
+        });
+    </script>
+</body>
+</html>

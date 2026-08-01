@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripLedger - 上傳記帳</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Noto+Sans+TC:wght@500;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #5ce1e6;
+            --upload-bg: #a8d5e5;
+            --upload-hover: #97c9db;
+            --btn-pink: #f0c3be;
+            --btn-pink-hover: #e5b3ad;
+            --text-dark: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-title {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .title-en {
+            font-family: 'Kalam', cursive;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .title-zh {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 3.2rem;
+            color: var(--text-dark);
+            margin-top: 5px;
+        }
+
+        .form-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 金額輸入區 */
+        .price-input-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .currency-label {
+            font-family: 'Kalam', cursive;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1;
+        }
+
+        .price-input {
+            flex: 1;
+            height: 52px;
+            background-color: #ffffff;
+            border: 2px solid var(--text-dark);
+            border-radius: 26px;
+            padding: 0 20px;
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 1.5rem;
+            outline: none;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .price-input::placeholder {
+            color: #888888;
+            font-family: 'Zhi Mang Xing', cursive;
+        }
+
+        .price-input:focus {
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 上傳圖片框 */
+        .upload-card {
+            width: 100%;
+            height: 320px;
+            background-color: var(--upload-bg);
+            border: 2px solid var(--text-dark);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+        }
+
+        .upload-card:hover {
+            background-color: var(--upload-hover);
+        }
+
+        .upload-text {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            user-select: none;
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* 清楚與重新選擇按鈕 */
+        .remove-img-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* 送出按鈕 */
+        .submit-btn {
+            width: 100%;
+            height: 60px;
+            background-color: var(--btn-pink);
+            border: 2px solid var(--text-dark);
+            border-radius: 18px;
+            color: var(--text-dark);
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 2.4rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            margin-top: 5px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--btn-pink-hover);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Title Header -->
+        <div class="header-title">
+            <h1 class="title-en">TripLedger</h1>
+            <h2 class="title-zh">旅行貴啥小</h2>
+        </div>
+
+        <form class="form-container" onsubmit="handleFormSubmit(event)">
+            <!-- 金額輸入 -->
+            <div class="price-input-wrapper">
+                <span class="currency-label">NT$</span>
+                <input type="number" class="price-input" placeholder="請輸入金額" required min="0" step="1">
+            </div>
+
+            <!-- 上傳圖片 -->
+            <div class="upload-card" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <span class="upload-text" id="uploadText">上傳附圖</span>
+                <img id="imagePreview" class="image-preview" alt="預覽圖">
+                <button type="button" class="remove-img-btn" id="removeBtn" onclick="removeImage(event)">✕</button>
+            </div>
+            <input type="file" id="fileInput" class="file-input" accept="image/*" onchange="previewImage(event)">
+
+            <!-- 送出按鈕 -->
+            <button type="submit" class="submit-btn">送出記帳</button>
+        </form>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    const uploadText = document.getElementById('uploadText');
+                    const removeBtn = document.getElementById('removeBtn');
+
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    uploadText.style.display = 'none';
+                    removeBtn.style.display = 'flex';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeImage(event) {
+            event.stopPropagation(); // 防止觸發觸發上傳區點擊
+            const preview = document.getElementById('imagePreview');
+            const uploadText = document.getElementById('uploadText');
+            const removeBtn = document.getElementById('removeBtn');
+            const fileInput = document.getElementById('fileInput');
+
+            fileInput.value = '';
+            preview.src = '';
+            preview.style.display = 'none';
+            uploadText.style.display = 'block';
+            removeBtn.style.display = 'none';
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('記帳成功！');
+            window.location.href = '2.html';
+        }
+    </script>
+</body>
+</html>

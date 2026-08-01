@@ -1,0 +1,538 @@
+:root {
+  --bg-color: #5ce1e6;
+  --card-bg: #ffffff;
+  --primary-btn: #47d6dc;
+  --primary-btn-hover: #36c5cc;
+  --text-dark: #222222;
+  --border-color: #222222;
+  --text-muted: #666666;
+  --item-card-bg: #c9f5f7;
+  --btn-pink: #f0c3be;
+  --btn-pink-hover: #e5b3ad;
+  --btn-active: #a1dcf2;
+  --btn-inactive: #d6ebf7;
+  --btn-submit: #4fa8e2;
+  --btn-submit-hover: #3d94cb;
+  --upload-bg: #a8d5e5;
+  --upload-hover: #97c9db;
+  --font-kalam: var(--font-kalam);
+  --font-noto: var(--font-noto);
+  --font-zhi: var(--font-zhi);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-noto), "Noto Sans TC", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ 共用的置中頁面 ============ */
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.page-top {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 40px;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============ 頁首標題 ============ */
+.header-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.title-en {
+  font-family: var(--font-kalam), cursive;
+  font-size: 2.8rem;
+  color: var(--text-dark);
+  line-height: 1.1;
+}
+
+.title-zh {
+  font-family: var(--font-zhi), cursive;
+  font-size: 3.2rem;
+  color: var(--text-dark);
+  margin-top: 5px;
+}
+
+/* ============ 登入頁 ============ */
+.login-card {
+  background-color: var(--card-bg);
+  border-radius: 24px;
+  padding: 40px 25px 30px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  position: relative;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lock-icon-container {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 85px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.lock-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.password-input {
+  width: 100%;
+  height: 52px;
+  border: 2px solid var(--primary-btn);
+  border-radius: 26px;
+  padding: 0 50px 0 20px;
+  font-size: 1.05rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.password-input:focus {
+  border-color: #2ab8bf;
+  box-shadow: 0 0 0 3px rgba(71, 214, 220, 0.25);
+}
+
+.eye-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.eye-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 52px;
+  background-color: var(--primary-btn);
+  border: none;
+  border-radius: 26px;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-family: var(--font-zhi), cursive;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  letter-spacing: 2px;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-btn-hover);
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-error {
+  color: #d64545;
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 1.2em;
+}
+
+.taiwan-map {
+  margin-top: 35px;
+  width: 180px;
+  opacity: 0.85;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));
+}
+
+/* ============ 總覽頁 ============ */
+.total-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.total-title {
+  font-family: var(--font-zhi), cursive;
+  font-size: 2.8rem;
+  color: var(--text-dark);
+  line-height: 1.1;
+}
+
+.total-amount {
+  font-family: var(--font-kalam), cursive;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.item-card {
+  background-color: var(--item-card-bg);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease;
+}
+
+.item-card:active {
+  transform: scale(0.99);
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 65%;
+}
+
+.item-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.item-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.item-category {
+  font-family: var(--font-zhi), cursive;
+  font-size: 1.25rem;
+  color: var(--text-dark);
+}
+
+.item-price {
+  font-family: var(--font-kalam), cursive;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.item-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.add-btn {
+  width: 100%;
+  height: 60px;
+  background-color: var(--btn-pink);
+  border: 2px solid var(--text-dark);
+  border-radius: 16px;
+  color: var(--text-dark);
+  font-family: var(--font-zhi), cursive;
+  font-size: 2.2rem;
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.add-btn:hover {
+  background-color: var(--btn-pink-hover);
+  transform: translateY(-2px);
+}
+
+.add-btn:active {
+  transform: translateY(1px);
+}
+
+.empty-state {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ============ 記帳細節選擇頁 ============ */
+.form-card {
+  background-color: var(--card-bg);
+  border-radius: 24px;
+  padding: 32px 24px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.toggle-btn {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 24px;
+  background-color: var(--btn-inactive);
+  color: var(--text-dark);
+  font-family: var(--font-zhi), cursive;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.toggle-btn.active {
+  background-color: var(--btn-active);
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.input-box {
+  width: 100%;
+  height: 52px;
+  border: 2px solid var(--text-dark);
+  border-radius: 26px;
+  padding: 0 20px;
+  font-family: var(--font-zhi), cursive;
+  font-size: 1.4rem;
+  outline: none;
+  text-align: center;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+.input-box::placeholder {
+  color: #888;
+  font-family: var(--font-zhi), cursive;
+}
+
+.input-box:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.select-box {
+  width: 100%;
+  height: 52px;
+  border: 2px solid var(--text-dark);
+  border-radius: 26px;
+  padding: 0 20px;
+  font-family: var(--font-zhi), cursive;
+  font-size: 1.4rem;
+  outline: none;
+  text-align: center;
+  text-align-last: center;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23222222' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.select-box:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ============ 記帳頁 ============ */
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.price-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.currency-label {
+  font-family: var(--font-kalam), cursive;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1;
+}
+
+.price-input {
+  flex: 1;
+  height: 52px;
+  background-color: #ffffff;
+  border: 2px solid var(--text-dark);
+  border-radius: 26px;
+  padding: 0 20px;
+  font-family: var(--font-zhi), cursive;
+  font-size: 1.5rem;
+  outline: none;
+  text-align: center;
+  transition: all 0.2s ease;
+  -moz-appearance: textfield;
+}
+
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.price-input::placeholder {
+  color: #888888;
+  font-family: var(--font-zhi), cursive;
+}
+
+.price-input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.upload-card {
+  width: 100%;
+  height: 320px;
+  background-color: var(--upload-bg);
+  border: 2px solid var(--text-dark);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.upload-card:hover {
+  background-color: var(--upload-hover);
+}
+
+.upload-text {
+  font-family: var(--font-zhi), cursive;
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  user-select: none;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.file-input {
+  display: none;
+}
+
+.remove-img-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.form-message {
+  color: #d64545;
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 1.2em;
+}
