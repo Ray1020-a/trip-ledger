@@ -3,13 +3,13 @@ module.exports = {
     {
       name: "trip-ledger",
       script: "node_modules/next/dist/bin/next",
-      args: "start -p 30002",
+      args: "start -p 3002",
       cwd: __dirname,
       instances: 1,
       exec_mode: "fork",
       env: {
         NODE_ENV: "production",
-        PORT: 30002,
+        PORT: 3002,
       },
       autorestart: true,
       max_restarts: 10,
