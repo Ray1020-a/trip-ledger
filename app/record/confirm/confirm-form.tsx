@@ -153,6 +153,8 @@ export default function ConfirmForm({
             <span className="currency-label">NT$</span>
             <input
               type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
               className="price-input"
               placeholder="請輸入金額"
               required
@@ -160,7 +162,7 @@ export default function ConfirmForm({
               step="1"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-            />
+          />
           </div>
 
           {withImage && (
