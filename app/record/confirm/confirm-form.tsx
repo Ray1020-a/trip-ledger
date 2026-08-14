@@ -150,7 +150,6 @@ export default function ConfirmForm({
 
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="price-input-wrapper">
-            <span className="currency-label">NT$</span>
             <input
               type="number"
               inputMode="numeric"
